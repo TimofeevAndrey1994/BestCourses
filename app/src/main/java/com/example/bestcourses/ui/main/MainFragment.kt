@@ -15,7 +15,7 @@ import com.example.bestcourses.ui.recycler_view.CourseAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainFragment : BaseFragmentBinding<FragmentMainBinding> (){
+class MainFragment : BaseFragmentBinding<FragmentMainBinding>() {
 
     private val mainScreenViewModel: MainScreenViewModel by viewModel()
 
@@ -35,7 +35,10 @@ class MainFragment : BaseFragmentBinding<FragmentMainBinding> (){
         }
         binding.rvCourses.adapter = adapter
 
-        mainScreenViewModel.getCourses()
+        binding.tvByDate.setOnClickListener {
+            mainScreenViewModel.sortCoursesByDate()
+        }
+
         mainScreenViewModel.observeScreenState().observe(viewLifecycleOwner) { state ->
             renderState(state)
         }
@@ -49,11 +52,12 @@ class MainFragment : BaseFragmentBinding<FragmentMainBinding> (){
         }
     }
 
-    private fun renderState(state: ScreenState){
-        when(state){
+    private fun renderState(state: ScreenState) {
+        when (state) {
             is ScreenState.Content -> {
                 adapter.addAll(state.courses)
             }
+
             ScreenState.Error -> {}
             ScreenState.Loading -> {}
         }
