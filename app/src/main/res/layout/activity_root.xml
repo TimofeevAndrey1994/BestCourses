@@ -5,48 +5,31 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.root.RootActivity"
-    android:theme="@style/Base.Theme.BestCourses">
+    tools:context=".ui.root.RootActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:defaultNavHost="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/navigation" />
 
-<com.google.android.material.bottomnavigation.BottomNavigationView
-    android:id="@+id/bottom_nav"
-    android:layout_width="0dp"
-    android:layout_height="80dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/bottom_view"
-    app:menu="@menu/bottom_navigation_menu"
-    app:backgroundTint="#24252A"
-    app:itemIconTint="#F2F2F3"
-    app:itemTextColor="#F2F2F3"
-    android:paddingTop="8dp" />
-
-    <View
-        android:id="@+id/bottom_view"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
         android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:background="#24252A"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="80dp"
+        style="@style/Widget.MaterialComponents.BottomNavigationView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <View
-        android:id="@+id/white_line"
-        android:layout_width="108dp"
-        android:layout_height="4dp"
-        android:background="@drawable/white_line"
-        app:layout_constraintBottom_toBottomOf="@id/bottom_view"
-        app:layout_constraintStart_toStartOf="@id/bottom_view"
-        app:layout_constraintEnd_toEndOf="@id/bottom_view"
-        app:layout_constraintTop_toTopOf="@id/bottom_view"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu="@menu/bottom_navigation_menu"
+        app:backgroundTint="#24252A"
+        app:itemIconTint="#F2F2F3"
+        app:itemTextColor="#F2F2F3"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

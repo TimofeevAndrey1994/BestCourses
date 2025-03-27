@@ -20,7 +20,7 @@ class CoursesRepositoryImpl(
             when (response.resultCode) {
                 200 -> {
                     val courses = (response as CoursesResponse).courses
-                    emit(Resource.Success(courses.map { courseMapper.map(it) }, null))
+                    emit(Resource.Success(courses?.map { courseMapper.map(it!!) } ?: emptyList() , null))
                 }
 
                 else -> emit(Resource.Error(null))

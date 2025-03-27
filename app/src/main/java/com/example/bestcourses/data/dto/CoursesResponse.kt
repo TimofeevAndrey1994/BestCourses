@@ -1,5 +1,9 @@
 package com.example.bestcourses.data.dto
 
-import com.example.bestcourses.domain.model.CourseDTO
 
-data class CoursesResponse(val courses: List<CourseDTO>): Response()
+import com.google.gson.annotations.SerializedName
+
+data class CoursesResponse(
+    @SerializedName("courses")
+    val courses: List<CourseDTO?>? = null
+) : Response()

@@ -25,7 +25,7 @@ val dataModule = module {
 val networkModule = module {
     single<CoursesApi> {
         val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://drive.usercontent.google.com")
+            .baseUrl("https://drive.usercontent.google.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         retrofit.create(CoursesApi::class.java)

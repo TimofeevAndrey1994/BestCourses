@@ -8,11 +8,14 @@ import com.example.bestcourses.databinding.FragmentMainBinding
 import com.example.bestcourses.presentation.MainScreenViewModel
 import com.example.bestcourses.presentation.state.ScreenState
 import com.example.bestcourses.ui.base.BaseFragmentBinding
+import com.example.bestcourses.ui.main.recycler_view.CourseAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : BaseFragmentBinding<FragmentMainBinding> (){
 
     private val mainScreenViewModel: MainScreenViewModel by viewModel()
+
+    private val adapter = CourseAdapter()
 
     override fun onCreateBinding(
         inflater: LayoutInflater,
@@ -23,6 +26,8 @@ class MainFragment : BaseFragmentBinding<FragmentMainBinding> (){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.rvCourses.adapter = adapter
+
         mainScreenViewModel.getCourses()
         mainScreenViewModel.observeScreenState().observe(viewLifecycleOwner) { state ->
             renderState(state)
@@ -31,9 +36,11 @@ class MainFragment : BaseFragmentBinding<FragmentMainBinding> (){
 
     private fun renderState(state: ScreenState){
         when(state){
-            is ScreenState.Content -> TODO()
-            ScreenState.Error -> TODO()
-            ScreenState.Loading -> TODO()
+            is ScreenState.Content -> {
+                adapter.addAll(state.courses)
+            }
+            ScreenState.Error -> {}
+            ScreenState.Loading -> {}
         }
     }
 

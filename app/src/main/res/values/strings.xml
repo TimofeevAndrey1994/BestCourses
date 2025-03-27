@@ -5,4 +5,7 @@
     <string name="account">Аккаунт</string>
     <string name="courses_in_one_place">Тысячи курсов в одном месте</string>
     <string name="to_continue">Продолжить</string>
+    <string name="search_courses">Search courses...</string>
+    <string name="by_date">По дате добавления</string>
+    <string name="more_details">Подробнее</string>
 </resources>

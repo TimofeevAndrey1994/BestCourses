@@ -3,20 +3,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    android:paddingHorizontal="16dp"
+    android:paddingTop="16dp">
 
 
     <EditText
+        style="@style/edit_text_style"
         android:layout_width="0dp"
-        android:layout_height="56dp" />
+        android:layout_marginEnd="8dp"
+        android:drawableStart="@drawable/search"
+        android:hint="@string/search_courses"
+        app:layout_constraintEnd_toStartOf="@id/img_filter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill,TextFields" />
+
+    <ImageView
+        android:id="@+id/img_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_oval"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="18dp"
+        android:src="@drawable/filter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+
+    <TextView
+        android:id="@+id/tv_by_date"
+        style="@style/green_tv"
+        android:layout_marginTop="16dp"
+        android:text="@string/by_date"
+        app:drawableEndCompat="@drawable/two_arrows"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_filter" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_courses"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_by_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
