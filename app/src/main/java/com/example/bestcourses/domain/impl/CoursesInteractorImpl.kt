@@ -5,6 +5,7 @@ import com.example.bestcourses.domain.api.CoursesRepository
 import com.example.bestcourses.domain.model.Course
 import com.example.bestcourses.domain.model.Resource
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 class CoursesInteractorImpl(private val coursesRepository: CoursesRepository) : CoursesInteractor {
@@ -15,5 +16,25 @@ class CoursesInteractorImpl(private val coursesRepository: CoursesRepository) : 
                 is Resource.Success -> resourse.data
             }
         }
+    }
+
+    override suspend fun saveCourseToFavouriteDb(course: Course) {
+        coursesRepository.saveCourseToFavouriteTable(course)
+    }
+
+    override suspend fun deleteCourseFromFavouriteTable(course: Course) {
+        coursesRepository.deleteCourseFromFavouriteTable(course)
+    }
+
+    override fun getFavouriteCourses(): Flow<List<Course>> {
+        return coursesRepository.getAllFavouriteCourses()
+            .map {resource ->
+                when(resource){
+                    is Resource.Error -> {
+                        emptyList()
+                    }
+                    is Resource.Success -> resource.data ?: emptyList()
+                }
+            }
     }
 }

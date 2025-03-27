@@ -1,6 +1,7 @@
 package com.example.bestcourses.ui.utils
 
 import android.app.Application
+import com.example.bestcourses.data.di.dataBaseModule
 import com.example.bestcourses.data.di.dataModule
 import com.example.bestcourses.data.di.networkModule
 import com.example.bestcourses.domain.di.domainModule
@@ -13,7 +14,7 @@ class App: Application() {
         super.onCreate()
         startKoin {
             androidContext(this@App)
-            modules(dataModule, domainModule, viewModelsModule, networkModule)
+            modules(dataModule, domainModule, dataBaseModule, viewModelsModule, networkModule)
         }
     }
 }

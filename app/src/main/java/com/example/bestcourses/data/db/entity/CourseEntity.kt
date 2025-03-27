@@ -1,10 +1,14 @@
-package com.example.bestcourses.domain.model
+package com.example.bestcourses.data.db.entity
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-data class Course(
-    var hasLike: Boolean? = null,
+@Entity(tableName = "favourite_courses")
+data class CourseEntity(
+    val hasLike: Boolean? = null,
+    @PrimaryKey
     val id: Int? = null,
     val price: String? = null,
     val publishDate: String? = null,
