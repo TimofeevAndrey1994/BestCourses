@@ -16,4 +16,8 @@
         android:id="@+id/accountFragment"
         android:name="com.example.bestcourses.ui.account.AccountFragment"
         android:label="AccountFragment" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.bestcourses.ui.splash.SplashFragment"
+        android:label="SplashFragment" />
 </navigation>

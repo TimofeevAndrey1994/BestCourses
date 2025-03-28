@@ -19,6 +19,7 @@ import java.util.Locale
 class MainScreenViewModel(private val coursesInteractor: CoursesInteractor) : ViewModel() {
 
     private var coursesList: List<Course> = emptyList()
+    private var sortState: SORT_STATE? = null
 
     private val screenState = MutableLiveData<ScreenState>()
     fun observeScreenState(): LiveData<ScreenState> = screenState
@@ -61,7 +62,23 @@ class MainScreenViewModel(private val coursesInteractor: CoursesInteractor) : Vi
 
     fun sortCoursesByDate() {
         val formatter = SimpleDateFormat("yyyy-MM-dd", Locale("ru"))
-        coursesList = coursesList.sortedWith(compareBy { formatter.parse(it.startDate) })
+        if (sortState == null) {
+            sortState = SORT_STATE.ASC
+        }
+        if(sortState == SORT_STATE.ASC) {
+            coursesList = coursesList.sortedWith(compareBy { formatter.parse(it.startDate!!) })
+            sortState = SORT_STATE.DESC
+        }
+        else if(sortState == SORT_STATE.DESC) {
+            coursesList = coursesList.sortedWith(compareByDescending { formatter.parse(it.startDate!!) })
+            sortState = SORT_STATE.ASC
+        }
+
         screenState.postValue(ScreenState.Content(coursesList))
+    }
+
+    enum class SORT_STATE{
+        ASC,
+        DESC
     }
 }

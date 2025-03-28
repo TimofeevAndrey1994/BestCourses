@@ -20,7 +20,8 @@
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".ui.splash.SplashFragment"/>
 
 
     <ImageView
@@ -40,26 +41,8 @@
         style="@style/best_courses_button_style"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_view"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/to_continue" />
 
-    <View
-        android:id="@+id/bottom_view"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:background="#151515"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <View
-        android:id="@+id/white_line"
-        android:layout_width="108dp"
-        android:layout_height="4dp"
-        android:background="@drawable/white_line"
-        app:layout_constraintBottom_toBottomOf="@id/bottom_view"
-        app:layout_constraintEnd_toEndOf="@id/bottom_view"
-        app:layout_constraintStart_toStartOf="@id/bottom_view"
-        app:layout_constraintTop_toTopOf="@id/bottom_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
