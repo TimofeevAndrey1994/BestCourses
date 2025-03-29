@@ -82,7 +82,8 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_price"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_price"
-            android:text="@string/more_details" />
+            android:text="@string/more_details"
+            android:layout_marginEnd="16dp"/>
 
         <TextView
             android:id="@+id/tv_rating"

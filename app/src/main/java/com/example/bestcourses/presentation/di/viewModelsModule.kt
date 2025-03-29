@@ -1,5 +1,6 @@
 package com.example.bestcourses.presentation.di
 
+import com.example.bestcourses.presentation.EnterScreenViewModel
 import com.example.bestcourses.presentation.FavouriteScreenViewModel
 import com.example.bestcourses.presentation.MainScreenViewModel
 import org.koin.core.module.dsl.viewModel
@@ -11,5 +12,8 @@ val viewModelsModule = module {
     }
     viewModel {
         FavouriteScreenViewModel(get())
+    }
+    viewModel {
+        EnterScreenViewModel(get())
     }
 }

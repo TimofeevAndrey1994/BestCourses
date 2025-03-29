@@ -3,6 +3,7 @@ package com.example.bestcourses.data.di
 import androidx.room.Room
 import com.example.bestcourses.data.db.AppDataBase
 import com.example.bestcourses.data.impl.CoursesRepositoryImpl
+import com.example.bestcourses.data.impl.ExternalNavigatorImpl
 import com.example.bestcourses.data.internal_storage.AppSharedPreferences
 import com.example.bestcourses.data.mappers.CourseMapper
 import com.example.bestcourses.data.mappers.FavouriteCourseMapper
@@ -10,6 +11,7 @@ import com.example.bestcourses.data.network.CoursesApi
 import com.example.bestcourses.data.network.NetworkClient
 import com.example.bestcourses.data.network.RetrofitNetworkClient
 import com.example.bestcourses.domain.api.CoursesRepository
+import com.example.bestcourses.domain.api.ExternalNavigator
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -22,8 +24,8 @@ val dataModule = module {
     single<NetworkClient> {
         RetrofitNetworkClient(get(), get())
     }
-    single {
-        AppSharedPreferences(get())
+    single<ExternalNavigator> {
+        ExternalNavigatorImpl(get())
     }
     factory {
         CourseMapper()
